@@ -1,0 +1,144 @@
+body {
+    
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+}
+
+header {
+  
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+main {
+    padding: 202px;
+}
+
+section {
+    margin-bottom: 20px;
+    background: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.video-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+video {
+    width: 100%;
+    max-width: 400px;
+    margin-top: auto;
+    
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background: #333;
+    color: #fff;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+/* Blog Posts Section */
+#blog-posts {
+    margin: 20px 0;
+    padding: 15px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#blog-posts h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+#blog-posts article {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 15px;
+}
+
+#blog-posts article h3 {
+    font-size: 20px;
+    color: #333;
+}
+
+#blog-posts article p {
+    font-size: 16px;
+    color: #666;
+}
+
+#blog-posts article img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+#blog-posts article a {
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: bold;
+}
+
+/* Tips and Tricks Section */
+#tips-tricks {
+    margin: 20px 0;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#tips-tricks h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+#tips-tricks ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#tips-tricks li {
+    background: #fff;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+#tips-tricks li strong {
+    color: #333;
+}
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+  

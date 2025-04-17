@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Martial Art Course</title>
+    <link rel="stylesheet" href="test.css">
+</head>
+<body>
+       
+    <div class="sidebar">
+        <button onclick="goBack()" id="back-button">Go Back</button>
+        <ul id="moves-list">
+            <li onclick="showMove('Ginga')">Ginga</li>
+            <li onclick="showMove('Au')">Au</li>
+            <li onclick="showMove('Queixada')">Queixada</li>
+            
+        </ul>
+    </div>
+    <div class="main-content">
+        <div class="header-bar">Capoeira</div>
+        <div id="video-section">
+            <h2 id="move-title"></h2>
+            <video id="move-video" controls>
+                <source id="video-source" src="" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p id="move-info"></p> <!-- Move description -->
+        </div>
+        <div id="action-section">
+            <h1>Start your training</h1>
+            <button onclick="showMoveInfo()">Start</button>
+        </div>
+        
+    </div>
+    <div class="timer-sidebar">
+        <h4>Session History</h4>
+        <ul id="session-data"></ul>
+    </div>
+
+    <!-- Welcome Modal -->
+    <div id="welcome-modal" class="modal">
+        <div class="modal-content">
+            <h2>Welcome!</h2>
+            <p>Please choose a move you want to learn</p>
+            <button onclick="closeWelcomeModal()">Get Started</button>
+        </div>
+    </div>
+
+    <!-- Move Info Modal -->
+    <div id="move-info-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <button class="close-button" onclick="closeMoveInfoModal()">&times;</button>
+            <h2 id="move-title"></h2>
+            <p id="move-info"></p>
+            <button onclick="startTimer()">Start Now</button>
+        </div>
+    </div>
+
+    <!-- Timer Modal -->
+   
+<div id="timer-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <h3 id="timer-move-title">Session Timer</h3>
+        <p id="session-timer-display">Time: 0 seconds</p>
+        <video id="timer-move-video" width="320" height="240" controls>
+            <source id="timer-video-source" src="" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <p>Do this for 1min</p>
+        <button onclick="stopTimer()">Stop</button>
+    </div>
+</div>
+
+    <!-- Reps Modal -->
+    <div id="reps-modal" class="modal">
+        <div class="modal-content">
+            <p>How many reps did you complete?</p>
+            <input type="number" id="reps-input" min="0" max="100" value="0">
+            <button onclick="submitSession()">Submit</button>
+        </div>
+    </div>
+
+    <!-- Profile Modal -->
+    <div id="profile-modal" class="modal">
+        <div class="modal-content">
+            <h3>Session Data Summary</h3>
+            <ul id="session-data-summary"></ul>
+            <button onclick="closeProfileModal()">Close</button>
+        </div>
+    </div>
+
+    <script src="test.js"></script>
+</body>
+</html>

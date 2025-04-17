@@ -1,0 +1,57 @@
+body {
+    display: flex;
+}
+
+#sidebar {
+    width: 250px; /* Adjust width based on design */
+}
+
+#content {
+    flex-grow: 1; /* Allow content to take the remaining space */
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center children horizontally */
+    padding: 0px; /* Add some padding */
+}
+
+#saved-logs {
+    width: 80%; /* Control the width of the logs area */
+    position: relative; /* Relative positioning for absolute elements */
+}
+
+#logs-container {
+    max-height: 400px; /* Adjust height as needed */
+    overflow-y: auto;
+    border: 1px solid #000000da;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+#logs-list {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0;
+    margin: 0;
+}
+
+.search-container {
+    width: 100%; /* Full width */
+    max-width: 600px; /* Optional max width for layout */
+    margin: 20px auto; /* Center the container */
+}
+
+#search-bar {
+    width: 100%; /* Full width of container */
+    padding: 15px; /* Increase height by increasing padding */
+    font-size: 16px; /* Larger text */
+    border: 1px solid #4009c063; /* Optional border styling */
+    border-radius: 4px; /* Rounded corners */
+}
+.search-container {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Space between search bar and chart */
+}
+
+#log-chart {
+    flex-grow: 1; /* Allow the chart to take up space */
+}

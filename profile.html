@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+    <link rel="stylesheet" href="startexer2.css">
+    <link rel="stylesheet" href="profile.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Add Chart.js -->
+</head>
+<body>
+    <!-- Sidebar -->
+    <div id="sidebar">
+        <header>
+            <a href="website3.html" class="logo">UnicoFit</a>
+        </header>
+        <div class="toggle-btn" onclick="toggleSidebar()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul>
+            <li><a href="startexer2.html">Home</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="daily_quest.html">Daily Quiz</a></li>
+            <li><a href="profile.html" class="active">Profile</a></li>
+        </ul>
+    </div>
+
+    <div id="content">
+        <!-- The bar that sits above the main content -->
+        <div class="header-bar">
+            <h1>Profile</h1>
+        </div>
+
+        <div id="saved-logs">
+            <h3>Saved Logs:</h3>
+            <div class="logs-container">
+                <!-- Search bar and log list -->
+                <div class="search-logs">
+                    <input type="text" id="search-bar" placeholder="Search logs..." oninput="filterLogs()">
+                    <div id="logs-container">
+                        <ul id="logs-list"></ul>
+                    </div>
+                </div>
+                <!-- Chart -->
+                <div class="chart-container">
+                    <canvas id="log-chart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="profile.js"></script>
+    <script src="exer2.js"></script>
+    
+</body>
+</html>
