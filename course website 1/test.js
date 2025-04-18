@@ -8,7 +8,7 @@ const maxSessions = 6;
 const moves = {
     Ginga: {
         video: 'videos/Ginga.mp4',
-        timerVideos: ['videos/endurance.mp4', 'videos/endurance2.mp4', 'videos/endurance3.mp4'], // Array of different videos for timer
+        timerVideos: ['https://github.com/Vera0001/UnicoFitness.git/videos/endurance.mp4', 'videos/endurance2.mp4', 'videos/endurance3.mp4'], // Array of different videos for timer
         description: 'The basic movement in capoeira that keeps you in constant motion.',
         currentIndex: 0 // Track the current video index
     },
