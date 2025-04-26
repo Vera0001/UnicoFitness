@@ -1,148 +1,177 @@
-body {
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
-    background-image: linear-gradient(to right, #43e97b 0%, #d8c8be 100%);
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin: 2rem 0;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-nav {
+.profile-avatar {
+    font-size: 4rem;
+    color: var(--dark);
+}
+
+.profile-info h2 {
+    margin-bottom: 0.5rem;
+}
+
+.profile-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: #666;
+}
+
+.streak-counter {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--light);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    color: var(--dark);
+    font-weight: 600;
+}
+
+.streak-counter i {
+    color: var(--primary);
+}
+
+.stats-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    align-items: center;
-    margin: 0;
-    padding: 1em 0;
-    width: 100%;
-    position: relative;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
     background-color: white;
-    z-index: 10; /* Ensure nav is above other content */
-}
-
-@media (min-width: 950px) {
-    nav {
-        grid-template-columns: 1fr 3fr;
-    }
-}
-
-nav a {
-    margin: auto;
-}
-
-nav a img:first-of-type {
-    width: 1.5em;
-}
-
-nav ul {
-    position: absolute;
-    top: 100%; /* Positioned right below the nav */
-    left: 0;
-    right: 0;
-    margin: 0;
-    padding: 0;
-    list-style: none;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     text-align: center;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--primary);
+}
+
+.stat-label {
+    color: #666;
+}
+
+.charts-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.chart-card {
     background-color: white;
-    transition: transform 0.3s;
-    transform: translateX(-100%);
-    z-index: 10; /* Ensure it stays above content like the search bar */
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-@media (min-width: 950px) {
-    nav ul {
-        position: static;
-        display: flex;
-        justify-content: flex-end;
-        top: 0%;
-        background-color: transparent;
-        transform: translateX(0);
-    }
-}
-
-nav ul li {
-    padding: 0.5em;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: black;
-    padding: 1em;
-}
-
-@media (min-width: 950px) {
-    nav ul:first-of-type li:last-of-type {
-        margin-right: 4em;
-    }
-}
-
-nav ul li:hover {
-    transition: 0.3s ease-in-out;
-    transform: scale(1.05);
-}
-
-nav ul:first-of-type.toonMenu {
-    transform: translateX(0);
-}
-
-nav button {
-    border: none;
-    background: none;
-    display: flex;
-    position: relative;
-    left: 1.5em;
-    order: -1;
-}
-
-nav button img {
-    width: 2em;
-}
-
-@media (min-width: 950px) {
-    nav button {
-        display: none;
-    }
-}
-
-#saved-logs {
-    width: 80%; /* Control the width of the logs area */
-    position: relative; /* Relative positioning for absolute elements */
-}
-
-#logs-container {
-    max-height: 400px; /* Adjust height as needed */
-    overflow-y: auto;
-    border: 1px solid #000000da;
-    padding: 10px;
-    margin-top: 10px;
-}
-
-#logs-list {
-    list-style-type: none; /* Remove bullet points */
-    padding: 0;
-    margin: 0;
-}
-
-.search-container {
-    width: 100%; /* Full width */
-    max-width: 600px; /* Optional max width for layout */
-    margin: 20px auto; /* Center the container */
-    position: relative; /* Ensure it is positioned below nav */
-    z-index: 1; /* Lower z-index so it stays under the nav */
-    top: 0; /* Adjust positioning relative to other elements */
-    transition: margin-top 0.3s ease; /* Smoothly shift when nav slides in */
-}
-
-#search-bar {
-    width: 100%; /* Full width of container */
-    padding: 15px; /* Increase height by increasing padding */
-    font-size: 16px; /* Larger text */
-    border: 1px solid #4009c063; /* Optional border styling */
-    border-radius: 4px; /* Rounded corners */
-}
-
-.search-container {
+.chart-card h3 {
+    margin-bottom: 1rem;
     display: flex;
     align-items: center;
-    gap: 20px; /* Space between search bar and chart */
+    gap: 0.5rem;
 }
 
-#log-chart {
-    flex-grow: 1; /* Allow the chart to take up space */
+.session-history {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.search-box {
+    position: relative;
+}
+
+.search-box i {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+}
+
+.search-box input {
+    padding: 0.5rem 1rem 0.5rem 2.5rem;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.session-list {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.session-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.session-item:last-child {
+    border-bottom: none;
+}
+
+.session-details {
+    display: flex;
+    gap: 1rem;
+}
+
+.session-badge {
+    background-color: var(--light);
+    color: var(--dark);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+
+@media (max-width: 768px) {
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem;
+    }
+
+    .profile-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .history-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .search-box {
+        width: 100%;
+    }
+
+    .search-box input {
+        width: 100%;
+    }
 }

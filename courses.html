@@ -3,97 +3,189 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main Page</title>
+    <title>Martial Arts Courses - Unico Fitness</title>
     <link rel="stylesheet" href="startexer2.css">
-    <style>
-        /* Add some basic styling */
-        .courses-section {
-            display: flex;
-            justify-content: space-around;
-            padding: 20px;
-        }
-
-        .course-card {
-            border: 2px solid #ccc;
-            border-radius: 10px;
-            padding: 15px;
-            text-align: center;
-            width: 30%;
-            height: 500px;  
-            transition: transform 0.3s ease;
-        }
-
-        .course-card:hover {
-            transform: scale(1.05);
-        }
-
-        .course-card img {
-            max-width: 100%;
-            border-radius: 8px;
-        }
-
-        .course-card h3 {
-            margin-top: 15px;
-            font-size: 1.2em;
-        }
-
-        .course-card p {
-            font-size: 0.9em;
-            color: #666;
-        }
-    </style>
+    <link rel="stylesheet" href="startexer3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <!-- Sidebar -->
-      <!-- navbar --><header>
+    <header>
         <nav>
-       
-            <a href="index.html"> <img src="./images/home.png" alt=""> </a>
-    
-            <button><img src="./images/hamburger.png" alt=""></button>
-            <ul>
-                <li><a href="startexer2.html" class="active">Home</a></li>
-                <li><a href="courses.html">Courses</a></li>
-                <li><a href="daily_quest.html">Daily Quiz</a></li>
-                <li><a href="profile.html">Profile</a></li>
+            <div class="logo">
+                <i class="fas fa-dumbbell"></i>
+                <span>Unico Fitness</span>
+            </div>
+            <button class="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="courses.html" class="active"><i class="fas fa-graduation-cap"></i> Courses</a></li>
+                <li><a href="calculator.html"><i class="fas fa-calculator"></i> Calculator</a></li>
+                <li><a href="profile.html"><i class="fas fa-user"></i> Profile</a></li>
+         
             </ul>
         </nav>
     </header>
 
- 
-    <!-- Main content - Course section -->
-    <div id="content">
-        <section class="courses-section">
-            <!-- Course 1 -->
-            <div class="course-card">
-                <a href="course website 1/Test.html">
-                    <img src="https://image.spreadshirtmedia.net/image-server/v1/compositions/T818A1PA1659PT17X23Y0D162384694W12360H19899/views/1,width=550,height=550,appearanceId=1,backgroundColor=FFFFFF,noPt=true/capoeira-regionale-silhouette-baby-langarmshirt.jpg" alt="Course 1">
-                    <h3>Capoeira</h3>
-                </a>
-                <p>Feel the Rhythm of the beat and dance with your hands and feet.</p>
+    <main>
+        <!-- Hero Section -->
+        <section class="courses-hero">
+            <div class="hero-content">
+                <h1>Master Your Martial Arts Journey</h1>
+                <p>Choose from our expert-led courses and begin your path to mastery</p>
             </div>
-
-            <!-- Course 2 -->
-            <div class="course-card">
-                <a href="course website 2/Test2.html">
-                    <img src="https://calendar.reynolds.edu/images/taekwando.jpg" alt="Course 2">
-                    <h3>Taekkyon</h3>
-                </a>
-                <p>Pour your poetry into kicks and stretches.</p>
-            </div>
-
-            <!-- Course 3 -->
-            <div class="course-card">
-                <a href="course website 3/Test3.html">
-                    <img src="wushu.png" height="75%" width="100%" alt="Course 3">
-                    <h3>Wushu</h3>
-                </a>
-                <p>Show your throwing skills with a sack of rice.</p>
-            </div>
-
         </section>
-    </div>
 
+        <div class="container">
+            <!-- Filters -->
+            <div class="filters">
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-level="all">All Levels</button>
+                    <button class="filter-btn" data-level="beginner">Beginner</button>
+                    <button class="filter-btn" data-level="intermediate">Intermediate</button>
+                    <button class="filter-btn" data-level="advanced">Advanced</button>
+                </div>
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="course-search" placeholder="Search courses...">
+                </div>
+            </div>
+
+            <!-- Courses Grid -->
+            <div class="courses-grid">
+                <!-- Capoeira Course -->
+                <div class="course-card" data-level="beginner">
+                    <div class="course-image">
+                        <img src="https://images.pexels.com/photos/8032781/pexels-photo-8032781.jpeg" alt="Capoeira">
+                        <span class="course-level">Beginner</span>
+                    </div>
+                    <div class="course-content">
+                        <h3>Capoeira Fundamentals</h3>
+                        <div class="course-meta">
+                            <span><i class="fas fa-user"></i> Mestre João Silva</span>
+                            <span><i class="fas fa-clock"></i> 8 weeks</span>
+                            <span><i class="fas fa-users"></i> 156 students</span>
+                        </div>
+                        <p>Master the basics of this Afro-Brazilian martial art that combines dance, acrobatics, and music.</p>
+                        <button class="expand-btn">Show Details</button>
+                        <div class="course-details hidden">
+                            <h4>Course Curriculum</h4>
+                            <ul>
+                                <li>Introduction to Capoeira History</li>
+                                <li>Basic Movements: Ginga, Au, Rolê</li>
+                                <li>Music and Instruments</li>
+                                <li>Partner Training Techniques</li>
+                                <li>First Sequences and Combinations</li>
+                            </ul>
+                            <a href="course website 1/Test.html" class="btn">Start Learning</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wushu Course -->
+                <div class="course-card" data-level="intermediate">
+                    <div class="course-image">
+                        <img src="https://images.pexels.com/photos/7045666/pexels-photo-7045666.jpeg" alt="Wushu">
+                        <span class="course-level">Intermediate</span>
+                    </div>
+                    <div class="course-content">
+                        <h3>Traditional Wushu Forms</h3>
+                        <div class="course-meta">
+                            <span><i class="fas fa-user"></i> Master Li Wei</span>
+                            <span><i class="fas fa-clock"></i> 12 weeks</span>
+                            <span><i class="fas fa-users"></i> 89 students</span>
+                        </div>
+                        <p>Develop advanced techniques and master traditional Chinese martial arts forms.</p>
+                        <button class="expand-btn">Show Details</button>
+                        <div class="course-details hidden">
+                            <h4>Course Curriculum</h4>
+                            <ul>
+                                <li>Advanced Stances and Transitions</li>
+                                <li>Traditional Weapon Forms</li>
+                                <li>Power Generation Techniques</li>
+                                <li>Competition Preparation</li>
+                                <li>Performance and Expression</li>
+                            </ul>
+                            <a href="course website 3/Test3.html" class="btn">Start Learning</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Taekwondo Course -->
+                <div class="course-card" data-level="advanced">
+                    <div class="course-image">
+                        <img src="https://images.pexels.com/photos/7045649/pexels-photo-7045649.jpeg" alt="Taekwondo">
+                        <span class="course-level">Advanced</span>
+                    </div>
+                    <div class="course-content">
+                        <h3>Olympic Taekwondo</h3>
+                        <div class="course-meta">
+                            <span><i class="fas fa-user"></i> Coach Kim Ji-woo</span>
+                            <span><i class="fas fa-clock"></i> 16 weeks</span>
+                            <span><i class="fas fa-users"></i> 42 students</span>
+                        </div>
+                        <p>Master advanced techniques and prepare for Olympic-style competition.</p>
+                        <button class="expand-btn">Show Details</button>
+                        <div class="course-details hidden">
+                            <h4>Course Curriculum</h4>
+                            <ul>
+                                <li>Advanced Kicking Combinations</li>
+                                <li>Olympic Sparring Strategies</li>
+                                <li>Competition Rules and Scoring</li>
+                                <li>Mental Preparation</li>
+                                <li>Tournament Preparation</li>
+                            </ul>
+                            <a href="course website 2/Test2.html" class="btn">Start Learning</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <div class="footer-logo">
+                        <i class="fas fa-dumbbell"></i>
+                        <span>Unico Fitness</span>
+                    </div>
+                    <p>Your journey to martial arts excellence starts here.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="courses.html">Courses</a></li>
+                        <li><a href="calculator.html">Calculator</a></li>
+                        <li><a href="profile.html">Profile</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; <span id="current-year"></span> Unico Fitness. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="courses.js"></script>
     <script src="exer2.js"></script>
 </body>
 </html>

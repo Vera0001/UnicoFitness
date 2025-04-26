@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <link rel="stylesheet" href="startexer2.css">
+    <link rel="stylesheet" href="calculator.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-dumbbell"></i>
+                <span>Unico Fitness</span>
+            </div>
+            <button class="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="courses.html"><i class="fas fa-graduation-cap"></i> Courses</a></li>
+                <li><a href="calculator.html" class="active"><i class="fas fa-calculator"></i> Calculator</a></li>
+                <li><a href="profile.html"><i class="fas fa-user"></i> Profile</a></li>
+               
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- BMI Calculator Section -->
+        <div id="bmi-calculator">
+            <div class="calculator-container">
+                <h2><i class="fas fa-weight"></i> BMI Calculator</h2>
+                <form id="bmi-form">
+                    <div class="form-group">
+                        <label for="weight">Weight (kg)</label>
+                        <input type="number" id="weight" step="0.1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="height">Height (cm)</label>
+                        <input type="number" id="height" step="0.1" required>
+                    </div>
+                    <button type="submit" class="btn">Calculate BMI</button>
+                </form>
+                <div id="bmi-result" class="result hidden">
+                    <div class="bmi-indicator">
+                        <div class="indicator-bar">
+                            <div class="marker"></div>
+                        </div>
+                        <div class="categories">
+                            <span>Underweight</span>
+                            <span>Normal</span>
+                            <span>Overweight</span>
+                            <span>Obese</span>
+                        </div>
+                    </div>
+                    <p class="bmi-value">Your BMI: <span id="bmi-number"></span></p>
+                    <p class="bmi-category">Category: <span id="bmi-category"></span></p>
+                    <p id="bmi-message"></p>
+                    <div id="weight-range" class="weight-range"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; <span id="current-year"></span> Unico Fitness. All rights reserved.</p>
+    </footer>
+
+    <script src="calculator.js"></script>
+</body>
+</html>

@@ -3,49 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main Page</title>
+    <title>Profile - Training History</title>
     <link rel="stylesheet" href="startexer2.css">
     <link rel="stylesheet" href="profile.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Add Chart.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-     <!-- navbar --><header>
+    <header>
         <nav>
-       
-            <a href="index.html"> <img src="./images/home.png" alt=""> </a>
-    
-            <button><img src="./images/hamburger.png" alt=""></button>
-            <ul>
-                <li><a href="startexer2.html" class="active">Home</a></li>
-                <li><a href="courses.html">Courses</a></li>
-                <li><a href="daily_quest.html">Daily Quiz</a></li>
-                <li><a href="profile.html">Profile</a></li>
+            <div class="logo">
+                <i class="fas fa-dumbbell"></i>
+                <span>Unico Fitness</span>
+            </div>
+            <button class="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="courses.html"><i class="fas fa-graduation-cap"></i> Courses</a></li>
+                <li><a href="calculator.html"><i class="fas fa-calculator"></i> Calculator</a></li>
+                <li><a href="profile.html" class="active"><i class="fas fa-user"></i> Profile</a></li>
+           
             </ul>
         </nav>
     </header>
 
-    
-
-        <div id="saved-logs">
-            <h3>Saved Logs:</h3>
-            <div class="logs-container">
-                <!-- Search bar and log list -->
-                <div class="search-logs">
-                    <input type="text" id="search-bar" placeholder="Search logs..." oninput="filterLogs()">
-                    <div id="logs-container">
-                        <ul id="logs-list"></ul>
+    <main class="container">
+        <div class="profile-header">
+            <div class="profile-avatar">
+                <i class="fas fa-user-circle"></i>
+            </div>
+            <div class="profile-info">
+                <h2 id="username">User</h2>
+                <div class="profile-meta">
+                    <span><i class="fas fa-calendar"></i> Member since: <span id="member-since"></span></span>
+                    <div class="streak-counter">
+                        <i class="fas fa-fire"></i>
+                        <span id="streak-count">0 Day Streak</span>
                     </div>
-                </div>
-                <!-- Chart -->
-                <div class="chart-container">
-                    <canvas id="log-chart"></canvas>
                 </div>
             </div>
         </div>
-    </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value" id="total-sessions">0</div>
+                <div class="stat-label">Total Sessions</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="total-duration">0s</div>
+                <div class="stat-label">Total Training Time</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="total-reps">0</div>
+                <div class="stat-label">Total Repetitions</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="unique-moves">0</div>
+                <div class="stat-label">Moves Practiced</div>
+            </div>
+        </div>
+
+        <div class="session-history">
+            <div class="history-header">
+                <h3><i class="fas fa-history"></i> Session History</h3>
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="search-input" placeholder="Search sessions...">
+                </div>
+            </div>
+            <div id="session-list" class="session-list"></div>
+        </div>
+    </main>
 
     <script src="profile.js"></script>
-    <script src="exer2.js"></script>
-    
+    <script src="app.js"></script>
 </body>
 </html>

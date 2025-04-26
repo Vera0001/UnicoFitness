@@ -1,10 +1,10 @@
-// Declare variables for the timer, session duration in seconds, session count, and max sessions allowed.
+// Declare variables for the timer, session duration in seconds, session count, and max sessions allowed
 let timer;
 let seconds = 0;
 let sessionCount = 0;
 const maxSessions = 6;
 
-// Define capoeira moves with their video sources and descriptions for display.
+// Define moves with their video sources and descriptions
 const moves = {
     Front_Kick: {
         video: 'videos/front kick.mp4',
@@ -26,14 +26,56 @@ const moves = {
     }
 };
 
+
+// Mobile menu functionality
+const menuToggle = document.getElementById('menu-toggle');
+const sidebar = document.getElementById('sidebar');
+
+menuToggle.addEventListener('click', () => {
+    sidebar.classList.toggle('active');
+    menuToggle.classList.toggle('menu-open');
+});
+
+// Close sidebar when clicking outside on mobile
+document.addEventListener('click', (e) => {
+    if (window.innerWidth <= 768 && 
+        !sidebar.contains(e.target) && 
+        !menuToggle.contains(e.target) && 
+        sidebar.classList.contains('active')) {
+        sidebar.classList.remove('active');
+        menuToggle.classList.remove('menu-open');
+    }
+});
+
 // Function to save session logs to localStorage
 function saveLog(data) {
     const logs = JSON.parse(localStorage.getItem("workoutLogs")) || [];
     logs.push(data);
     localStorage.setItem("workoutLogs", JSON.stringify(logs));
+    updateSessionHistory(logs);
 }
 
-// Function to display a selected capoeira move's video and description.
+// Function to update the session history display
+function updateSessionHistory(logs) {
+    const sessionData = document.getElementById('session-data');
+    sessionData.innerHTML = '';
+    
+    logs.forEach(log => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+            <div class="session-item">
+                <div class="move-name">${log.move}</div>
+                <div class="session-details">
+                    Duration: ${log.duration}s, Reps: ${log.reps}
+                </div>
+                <div class="session-date">${log.date}</div>
+            </div>
+        `;
+        sessionData.appendChild(li);
+    });
+}
+
+// Function to display a selected capoeira move
 function showMove(move) {
     const moveData = moves[move];
     if (moveData) {
@@ -41,138 +83,112 @@ function showMove(move) {
         document.getElementById('video-source').src = moveData.video;
         document.getElementById('move-video').load();
         document.getElementById('move-info').textContent = moveData.description;
-    } else {
-        console.error(`Move data not found for: ${move}`);
+        
+        // Close mobile menu after selection
+        if (window.innerWidth <= 768) {
+            sidebar.classList.remove('active');
+            menuToggle.classList.remove('menu-open');
+        }
     }
 }
 
-// Starts a timer displayed in the timer modal. The timer updates every second.
+// Timer functionality
 function startTimer() {
     const moveTitle = document.getElementById('move-title').textContent;
-
+    
     if (moveTitle && moves[moveTitle]) {
         const moveData = moves[moveTitle];
-
-        // Select the next timer video in the sequence
         const selectedTimerVideo = moveData.timerVideos[moveData.currentIndex];
-        moveData.currentIndex = (moveData.currentIndex + 1) % moveData.timerVideos.length; // Update the index
-
-        // Set the video source for the timer modal
-        document.getElementById('timer-video-source').src = selectedTimerVideo; // Use the selected timer video
-        document.getElementById('timer-move-video').load(); // Load the new timer video
-    } else {
-        console.error('Selected move is not valid or moveData is not defined.');
+        moveData.currentIndex = (moveData.currentIndex + 1) % moveData.timerVideos.length;
+        
+        document.getElementById('timer-video-source').src = selectedTimerVideo;
+        document.getElementById('timer-move-video').load();
+        
+        document.getElementById('timer-modal').style.display = 'flex';
+        document.getElementById('move-info-modal').style.display = 'none';
+        
+        seconds = 0;
+        timer = setInterval(() => {
+            seconds++;
+            document.getElementById('session-timer-display').textContent = `Time: ${seconds} seconds`;
+        }, 1000);
     }
-
-    // Show the timer modal
-    document.getElementById('timer-modal').style.display = 'flex';
-
-    seconds = 0; // Reset seconds for a new session
-    timer = setInterval(() => {
-        seconds++;
-        document.getElementById('session-timer-display').textContent = `Time: ${seconds} seconds`;
-    }, 1000);
 }
 
-// Stops the timer, hides the timer modal, and shows the reps input modal.
 function stopTimer() {
     clearInterval(timer);
     document.getElementById('timer-modal').style.display = 'none';
     showRepsModal();
 }
 
-// Shows the modal to input reps for the completed session.
+// Modal functionality
 function showRepsModal() {
     document.getElementById('reps-modal').style.display = 'flex';
 }
 
-// Closes the reps input modal.
 function closeRepsModal() {
     document.getElementById('reps-modal').style.display = 'none';
 }
 
-// Records session details including the move, duration, and reps; displays them on the page.
 function submitSession() {
-    const reps = document.getElementById('reps-input').value;
-    console.log('Reps:', reps); // Debug reps input
-
+    const reps = parseInt(document.getElementById('reps-input').value);
     const moveTitle = document.getElementById('move-title').textContent;
-    console.log('Move Title:', moveTitle); // Debug move title
-
-    if (!reps || isNaN(reps)) {
-        console.error('Invalid reps input!');
-        return; // Prevent saving invalid data
-    }
-
-    const sessionData = {
-        move: moveTitle,
-        duration: seconds,
-        reps: parseInt(reps, 10)
-    };
-
-    const timestamp = new Date().toLocaleString();
-    sessionData.date = timestamp;
-
-    console.log('Session Data:', sessionData); // Debug session data
-
-    // Add the session data to the session history and summary.
-    const listItem = document.createElement('li');
-    listItem.textContent = `Move: ${sessionData.move}, Duration: ${sessionData.duration} seconds, Reps: ${sessionData.reps}, Date: ${sessionData.date}`;
-    document.getElementById('session-data').appendChild(listItem);
-
-    const summaryItem = document.createElement('li');
-    summaryItem.textContent = `Move: ${sessionData.move}, Duration: ${sessionData.duration} seconds, Reps: ${sessionData.reps}, Date: ${sessionData.date}`;
-    document.getElementById('session-data-summary').appendChild(summaryItem);
-
-    saveLog(sessionData);
-
-    sessionCount++;
-    closeRepsModal();
-
-    if (sessionCount === maxSessions) {
-        showProfileModal();
-    } else {
-        startTimer();
+    
+    if (!isNaN(reps) && moveTitle) {
+        const sessionData = {
+            move: moveTitle,
+            duration: seconds,
+            reps: reps,
+            date: new Date().toLocaleString()
+        };
+        
+        saveLog(sessionData);
+        
+        // Update summary
+        const summaryItem = document.createElement('li');
+        summaryItem.textContent = `Move: ${sessionData.move}, Duration: ${sessionData.duration}s, Reps: ${sessionData.reps}`;
+        document.getElementById('session-data-summary').appendChild(summaryItem);
+        
+        sessionCount++;
+        closeRepsModal();
+        
+        if (sessionCount >= maxSessions) {
+            showProfileModal();
+        } else {
+            startTimer();
+        }
     }
 }
 
-// Shows the profile modal, which summarizes all completed sessions.
 function showProfileModal() {
     document.getElementById('profile-modal').style.display = 'flex';
 }
 
-// Closes the profile modal and resets the session count and session summary.
 function closeProfileModal() {
     document.getElementById('profile-modal').style.display = 'none';
     sessionCount = 0;
     document.getElementById('session-data-summary').innerHTML = '';
 }
 
-// Displays the welcome modal when the page loads.
-window.onload = function() {
-    document.getElementById('welcome-modal').style.display = 'flex';
-};
+function showMoveInfo() {
+    const moveTitle = document.getElementById('move-title').textContent;
+    const moveInfo = moves[moveTitle]?.description || "Select a move to begin training.";
+    
+    document.getElementById('modal-move-title').textContent = moveTitle;
+    document.getElementById('modal-move-info').textContent = moveInfo;
+    document.getElementById('move-info-modal').style.display = 'flex';
+}
 
-// Closes the welcome modal.
+function closeMoveInfoModal() {
+    document.getElementById('move-info-modal').style.display = 'none';
+}
+
+
+
 function closeWelcomeModal() {
     document.getElementById('welcome-modal').style.display = 'none';
 }
 
-// Closes the move info modal.
-function closeMoveInfoModal() {
-    document.getElementById('move-info-modal').style.display = 'none';
-    document.querySelector('.close-button').style.display = 'none';
-}
-
-// Shows detailed information about the selected move in a modal.
-function showMoveInfo() {
-    const moveInfo = "Info about the selected move.";
-    document.getElementById('move-info').textContent = moveInfo;
-    document.getElementById('move-info-modal').style.display = 'flex';
-    document.querySelector('.close-button').style.display = 'block';
-}
-
-// Redirects the user to the courses page.
 function goBack() {
     window.location.href = '../courses.html';
 }
